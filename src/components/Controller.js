@@ -10,19 +10,27 @@ import SkipNextIcon from '@material-ui/icons/SkipNext';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import {LinearProgress, PlayCircleFilledIcon, PauseCircleFilledIcon, PauseCircleFilledIcon, SkipNextIcon, SkipPreviousIcon, VolumeUpIcon} from '@material-ui/icons';
+
+
 class Controller extends React.Component {
-    constructor(){
+    constructor(props){
         super();
         this.state = {
-            playing: false
+            playing: props.playerState.isPlaying
         }
     }
+    
 
     handleClick(){
-        this.setState({playing: !this.state.playing})
+        // this.setState({playing: !this.state.playing})
+        console.log(this.state)
     }
 
     render(){
+
         const bottomBarStyle = {
             top: 'auto',
             bottom: 0,
@@ -39,7 +47,7 @@ class Controller extends React.Component {
                 <Toolbar>
                     <Grid container direction='row' alignItems='center'>
                             <SkipPreviousIcon style={iconStyle} fontSize='large'/>
-                            { !this.state.playing ? <PlayCircleFilledIcon onClick={() =>this.handleClick()} style={iconStyle}fontSize='large'/>
+                            { !this.state.playing ? <PlayCircleFilledIcon onClick={() =>this.handleClick()} style={iconStyle} fontSize='large'/>
                                 : <PauseCircleFilledIcon onClick={() =>this.handleClick()} style={iconStyle} fontSize='large'/>
                             }
                             <SkipNextIcon style={iconStyle} fontSize='large' />
